@@ -38,10 +38,13 @@ export function enrichHoldings(holdings: Holding[], liveData: Map<string, LiveFi
       portfolioPercent: totalInvestment === 0 ? 0 : (investment / totalInvestment) * 100,
       cmp,
       cmpSource: live?.cmpSource ?? (holding.spreadsheetCmp === null ? "unavailable" : "spreadsheet"),
+      cmpProvider: live?.cmpProvider,
       peRatio: live?.peRatio ?? holding.spreadsheetPe,
       peSource: live?.peSource ?? (holding.spreadsheetPe === null ? "unavailable" : "spreadsheet"),
+      peProvider: live?.peProvider,
       latestEarnings: live?.latestEarnings ?? holding.spreadsheetLatestEarnings,
       earningsSource: live?.earningsSource ?? (holding.spreadsheetLatestEarnings === null ? "unavailable" : "spreadsheet"),
+      earningsProvider: live?.earningsProvider,
       presentValue,
       gainLoss,
       gainLossPercent,
@@ -81,7 +84,9 @@ export function groupBySector(holdings: EnrichedHolding[]) {
       sector,
       holdings: sectorHoldings,
       ...summary,
-      portfolioPercent: totalInvestment === 0 ? 0 : (summary.totalInvestment / totalInvestment) * 100
+      portfolioPercent: totalInvestment === 0 ? 0 : (summary.totalInvestment / totalInvestment) * 100,
+      liveCount: sectorHoldings.filter((holding) => holding.cmpSource === "live").length,
+      totalCount: sectorHoldings.length
     };
   });
 }
