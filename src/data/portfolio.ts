@@ -6,6 +6,7 @@ export type Holding = {
   particulars: string;
   purchasePrice: number;
   quantity: number;
+  adjustmentFactor?: number;
   exchange: "NSE" | "BSE";
   exchangeCode: string;
   spreadsheetCmp: number | null;
@@ -41,6 +42,7 @@ export const portfolioHoldings: Holding[] = [
     particulars: "HDFC Bank",
     purchasePrice: 1490,
     quantity: 50,
+    adjustmentFactor: 2,
     exchange: "NSE",
     exchangeCode: "HDFCBANK",
     spreadsheetCmp: 1700.15,
@@ -74,6 +76,7 @@ export const portfolioHoldings: Holding[] = [
     particulars: "Bajaj Finance",
     purchasePrice: 6466,
     quantity: 15,
+    adjustmentFactor: 10,
     exchange: "NSE",
     exchangeCode: "BAJFINANCE",
     spreadsheetCmp: 8419.6,
@@ -470,6 +473,7 @@ export const portfolioHoldings: Holding[] = [
     particulars: "Pidilite",
     purchasePrice: 2376,
     quantity: 36,
+    adjustmentFactor: 2,
     exchange: "BSE",
     exchangeCode: "500331",
     spreadsheetCmp: 2730,
