@@ -40,6 +40,14 @@ export function formatPercent(value: number | null | undefined) {
   return `${sign}${value.toFixed(2)}%`;
 }
 
+export function formatUnsignedPercent(value: number | null | undefined) {
+  if (value === null || value === undefined || Number.isNaN(value)) {
+    return "Unavailable";
+  }
+
+  return `${value.toFixed(2)}%`;
+}
+
 export function formatTime(value: string | null) {
   if (!value) {
     return "Not updated yet";
